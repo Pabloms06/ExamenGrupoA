@@ -3,13 +3,9 @@ package com.example.examengrupoarecuperacin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main_2.*
-import kotlin.random.Random
-import kotlin.random.nextInt
+import kotlin.random.Random as Random
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,29 +20,35 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-
+        val texto2 = textView.text.toString()
         //AÑADIR NUMERO
         botonañadir.setOnClickListener{
-
-            val texto2 = textView.text.toString()
-            val numeroaleatorio = Random(Random.nextInt(999..9999))
-            textView.text = "${texto2}+${numeroaleatorio.nextInt()}"
+            textView.text = "${texto2}${Random.nextInt((9999 - 999)) + 999 }"
             botonsiguiente.isEnabled = it.isClickable
         }
 
 
         botonsiguiente.setOnClickListener{
+
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
 
+        fun Random( length: Int ){
 
-    fun Random.nextInt(range: IntRange): Int {
-        return range.start + nextInt(range.last - range.start)
-    }
+            val sb = StringBuilder(length)
 
+            val alphabet = "9999"
 
-}
+            val rand = Random
+            for ( i in 0 until sb.capacity() ) {
+
+                val index = rand.nextInt( alphabet.length )
+                sb.append( alphabet[ index ] )
+            }
+
         }
+    }
+}
 
 

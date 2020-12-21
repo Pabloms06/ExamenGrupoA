@@ -28,13 +28,10 @@ class SecondActivity : AppCompatActivity() {
                 }
             }
         })
+        
         val guardado = editTextTextPersonName.text.toString()
 
-    }
-
-}
-
-/* editTextTextPersonName.addTextChangedListener(object : TextWatcher {
+editTextTextPersonName.addTextChangedListener(object : TextWatcher {
      override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
      }
@@ -44,14 +41,16 @@ class SecondActivity : AppCompatActivity() {
      }
 
      override fun afterTextChanged(s: Editable?) {
-        if (editTextTextPersonName = guardado) {
-            Toast.makeText(this, "Cambia el texto primero", Toast.LENGTH_SHORT).show()
-        } else {
+         editTextTextPersonName.let {
+             if (it = guardado) {
+             val show = Toast.makeText(this, "Cambia el texto primero", Toast.LENGTH_SHORT).show()
+         } else {
              Toast.makeText(this, "Cambiado", Toast.LENGTH_SHORT) //no lo muestra
-         }
+         } }
+
      }
  })
 }
 
 }
-*/
+
